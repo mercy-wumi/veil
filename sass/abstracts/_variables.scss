@@ -1,1 +1,21 @@
- 
+// cyan
+$color-cyan: #00e0ff;
+
+// blue
+$color-blue: #4b6cff;
+
+// purple / magenta
+$color-purple: #a64dff;
+
+// default
+$color-white: #ffffff;
+$color-black: #0a0a0a;
+
+:root {
+  --color-cyan: #{$color-cyan};
+  --color-blue: #{$color-blue};
+  --color-purple: #{$color-purple};
+
+  --color-white: #{$color-white};
+  --color-black: #{$color-black};
+}

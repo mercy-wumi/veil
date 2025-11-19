@@ -1,3 +1,117 @@
+:root {
+  --color-cyan: #00e0ff;
+  --color-blue: #4b6cff;
+  --color-purple: #a64dff;
+  --color-white: #ffffff;
+  --color-black: #0a0a0a;
+}
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  position: relative;
+  color: var(--color-white);
+}
+
+.button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-cyan);
+  border-radius: 0.8rem;
+  border: none;
+  color: var(--color-white);
+}
+.button--main {
+  font-weight: 600;
+  padding: 0.8rem 2.5rem;
+  border-radius: 0.4rem;
+  background: linear-gradient(to left, var(--color-black), var(--color-purple));
+}
+.button--gradient {
+  background: linear-gradient(to right, var(--color-purple), var(--color-cyan));
+}
+
+.navbar {
+  position: absolute;
+  top: 2rem;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  background: linear-gradient(to right, var(--color-black), var(--color-cyan), var(--color-black));
+  border-radius: 1.6rem;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0rem 4rem;
+}
+.navbar__logo img {
+  height: 4rem;
+  width: auto;
+}
+.navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  list-style: none;
+  color: var(--color-white);
+}
+
+.hero {
+  height: 100dvh;
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero__brand-name {
+  font-size: 6.4rem;
+  font-weight: bold;
+  letter-spacing: 1.5rem;
+  color: var(--color-cyan);
+}
+.hero__brand-name span {
+  color: var(--color-purple);
+}
+.hero__text {
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 1.5;
+}
+.hero__text--2 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+.hero__text span {
+  text-transform: capitalize;
+  font-style: italic;
+  color: var(--color-cyan);
+  font-size: 2.4rem;
+}
+.hero__text {
+  max-width: 40rem;
+  width: 100%;
+}
+.hero button {
+  margin-top: 2rem;
+}
+
+.sent-messages {
+  margin-top: 2rem;
+  color: #000;
+}
+.sent-messages .messages {
+  margin-top: 1rem;
+}
+.sent-messages .messages p {
+  padding: 0.8rem;
+  border-bottom: 1px solid #ccc;
+}
 
 /*# sourceMappingURL=style.css.map */

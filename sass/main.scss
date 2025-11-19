@@ -1,5 +1,10 @@
 @use "./abstracts/variables";
 
 @use "./base/typography";
+@use "./base/base";
 
 @use "./components/button";
+@use "./components/navbar";
+@use "./components/hero";
+
+@use "./pages/sent-messages";

@@ -1,0 +1,36 @@
+.navbar {
+  position: absolute;
+  top: 2rem;
+  left: 5%;
+  right: 5%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+
+  background: linear-gradient(to right, var(--color-black), var(--color-cyan), var(--color-black));
+
+  border-radius: 1.6rem;
+
+  width: 80%;
+  margin: 0 auto;
+  padding: 0rem 4rem;
+
+  &__logo {
+    & img {
+      height: 4rem;
+      width: auto;
+    }
+  }
+
+  & ul {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    list-style: none;
+
+    color: var(--color-white);
+  }
+}

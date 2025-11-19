@@ -1,0 +1,30 @@
+.button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-cyan);
+
+  border-radius: 0.8rem;
+  border: none;
+
+  color: var(--color-white);
+
+  &--main {
+    font-weight: 600;
+    padding: 0.8rem 2.5rem;
+
+    border-radius: 0.4rem;
+
+    background: linear-gradient(
+      to left,
+      var(--color-black),
+      var(--color-purple)
+    );
+  }
+
+  &--gradient {
+    background: linear-gradient(
+      to right,
+      var(--color-purple),
+      var(--color-cyan)
+    );
+  }
+}

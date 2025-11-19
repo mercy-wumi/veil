@@ -1,0 +1,13 @@
+.sent-messages {
+  margin-top: 2rem;
+  color: #000;
+
+  .messages {
+    margin-top: 1rem;
+
+    p {
+      padding: 0.8rem;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}

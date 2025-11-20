@@ -18,17 +18,46 @@ import {
 const headers = createActionHeaders();
 
 export const GET = (req: Request) => {
-  const payload: ActionGetResponse = {
-    type: "action",
-    icon: new URL("/imgs/veil-resized.png", new URL(req.url).origin).toString(),
-    label: "Send",
-    description: "This allows the user to send anonymous message.",
-    title: "An anonymous messaging dapp built on Solana Blockchain",
-  };
+  try {
+    const requestUrl = new URL(req.url);
 
-  return Response.json(payload, {
-    headers,
-  });
+    const baseHref = new URL(`/api/actions/memo`, requestUrl.origin).toString();
+
+    const payload: ActionGetResponse = {
+      type: "action",
+      icon: new URL(
+        "/imgs/veil-resized.png",
+        new URL(req.url).origin
+      ).toString(),
+      label: "Send Anonymous Message",
+      description: "This allows the user to send anonymous message.",
+      title: "An anonymous messaging dapp built on Solana Blockchain",
+      links: {
+        actions: [
+          {
+            label: "Send Message", // Button text
+            href: `${baseHref}?message={message}`, // The POST endpoint
+            parameters: [
+              {
+                name: "message", // Matches the {message} in href
+                label: "Enter your message", // Placeholder text in input field
+                required: true,
+              },
+            ],
+            type: "message",
+          },
+        ],
+      },
+    };
+
+    return Response.json(payload, { headers });
+  } catch (err) {
+    console.log(err);
+    return Response.json(
+      { error: "Invalid request" },
+      { status: 500, headers }
+    );
+  }
 };
 
 export const OPTIONS = async () => {

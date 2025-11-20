@@ -4,6 +4,7 @@ import {
   ActionPostResponse,
   createPostResponse,
   createActionHeaders,
+  MEMO_PROGRAM_ID,
 } from "@solana/actions";
 import {
   clusterApiUrl,
@@ -56,7 +57,7 @@ export const POST = async (req: Request) => {
         microLamports: 1000,
       }),
       new TransactionInstruction({
-        programId: new PublicKey(VEIL_PROGRAM_ID),
+        programId: new PublicKey(MEMO_PROGRAM_ID),
         data: Buffer.from("Anonymous messaging dapp", "utf8"),
         keys: [],
       })
@@ -73,6 +74,7 @@ export const POST = async (req: Request) => {
       fields: {
         type: "transaction",
         transaction,
+        message: `Success! Message sent to chain`,
       },
     });
 

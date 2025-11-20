@@ -3,8 +3,9 @@ import {
   ActionPostRequest,
   ActionPostResponse,
   createPostResponse,
-  createActionHeaders,
   MEMO_PROGRAM_ID,
+  ACTIONS_CORS_HEADERS,
+  BLOCKCHAIN_IDS,
 } from "@solana/actions";
 import {
   clusterApiUrl,
@@ -15,7 +16,13 @@ import {
   TransactionInstruction,
 } from "@solana/web3.js";
 
-const headers = createActionHeaders();
+const blockchain = BLOCKCHAIN_IDS.devnet;
+
+const headers = {
+  ...ACTIONS_CORS_HEADERS,
+  "x-blockchain-ids": blockchain,
+  "x-action-version": "2.4",
+};
 
 export const GET = (req: Request) => {
   try {

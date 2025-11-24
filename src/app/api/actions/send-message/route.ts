@@ -24,12 +24,12 @@ const headers = {
   "x-action-version": "2.4",
 };
 
+export const OPTIONS = async () => {
+  return new Response(null, { headers });
+};
+
 export const GET = (req: Request) => {
   try {
-    const requestUrl = new URL(req.url);
-
-    const baseHref = new URL(`/api/actions/memo`, requestUrl.origin).toString();
-
     const payload: ActionGetResponse = {
       type: "action",
       icon: new URL(
@@ -42,12 +42,12 @@ export const GET = (req: Request) => {
       links: {
         actions: [
           {
-            label: "Send Message", // Button text
-            href: `${baseHref}?message={message}`, // The POST endpoint
+            label: "Send Message",
+            href: `/api/actions/send-message?message={message}`,
             parameters: [
               {
-                name: "message", // Matches the {message} in href
-                label: "Enter your message", // Placeholder text in input field
+                name: "message",
+                label: "Enter your message",
                 required: true,
               },
             ],
@@ -67,12 +67,13 @@ export const GET = (req: Request) => {
   }
 };
 
-export const OPTIONS = async () => {
-  return new Response(null, { headers });
-};
-
 export const POST = async (req: Request) => {
   try {
+    const url = new URL(req.url);
+    const message = url.searchParams.get("message");
+
+    const connection = new Connection(clusterApiUrl("devnet"));
+
     const body: ActionPostRequest = await req.json();
 
     let account: PublicKey;
@@ -101,7 +102,6 @@ export const POST = async (req: Request) => {
 
     transaction.feePayer = account;
 
-    const connection = new Connection(clusterApiUrl("devnet"));
     transaction.recentBlockhash = (
       await connection.getLatestBlockhash()
     ).blockhash;
@@ -110,7 +110,7 @@ export const POST = async (req: Request) => {
       fields: {
         type: "transaction",
         transaction,
-        message: `Success! Message sent to chain`,
+        message: message!,
       },
     });
 
